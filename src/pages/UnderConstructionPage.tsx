@@ -1,8 +1,17 @@
 import Illustration from "@/assets/Catto Ezio.svg";
 import Logo from "@/assets/Ezio Kids Logo.svg";
+import { useState } from "react";
 import { PiInstagramLogo, PiWhatsappLogo } from "react-icons/pi";
+import { toast } from "react-toastify";
 
 function UnderConstructionPage() {
+  const [email, setEmail] = useState("");
+
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+/;
+    return re.test(String(email).toLowerCase());
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-pink-200 via-purple-100 to-blue-200">
       {/* Header */}
@@ -28,10 +37,23 @@ function UnderConstructionPage() {
               type="email"
               placeholder="Your best email"
               className="flex-1 px-4 py-2 rounded-lg border-2 border-purple-300 focus:border-purple-500 outline-none transition"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              aria-label="Email input for notifications"
             />
             <button
-              type="submit"
-              className="px-6 py-2 bg-purple-500 text-white rounded-lg font-semibold hover:bg-purple-600 transition"
+              className={`px-6 py-2 bg-purple-500 text-white rounded-lg font-semibold hover:bg-purple-600 transition ${
+                validateEmail(email) && email !== ""
+                  ? "cursor-pointer"
+                  : "cursor-not-allowed opacity-50"
+              }`}
+              onClick={(e) => {
+                e.preventDefault();
+                toast.success("Thank you for subscribing!");
+              }}
+              aria-label="Subscribe to notifications"
+              disabled={!validateEmail(email) || email === ""}
             >
               Notify Me
             </button>
