@@ -1,22 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { ToastContainer } from "react-toastify";
+import { RouterProvider } from "react-router-dom";
 import "./index.css";
-import UnderConstructionPage from "./pages/UnderConstructionPage.tsx";
+import { router } from "./routes/routes";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <ToastContainer
-      position="top-right"
-      autoClose={2500}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-    />
-    <UnderConstructionPage />
+    <RouterProvider router={router} />
   </StrictMode>
 );
