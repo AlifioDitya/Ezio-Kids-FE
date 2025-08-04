@@ -1,18 +1,44 @@
+import BestSeller from "@/components/layouts/BestSeller";
+import Footer from "@/components/layouts/Footer";
 import Hero from "@/components/layouts/Hero";
-import { ProductCarousel } from "@/components/layouts/ProductCarousel";
+import { NewArrivalCarousel } from "@/components/layouts/NewArrivalCarousel";
 import TopBar from "@/components/layouts/TopBar";
 
-function LandingPage() {
+export default function LandingPage() {
   return (
-    <div className="w-full flex flex-col overflow-x-hidden bg-background">
-      <TopBar />
+    <>
+      {/* React 19 will hoist these into <head> */}
+      <title>Home – Ezio Kids</title>
+      <meta
+        name="description"
+        content="Welcome to Ezio Kids—bright, sustainable kidswear for every adventure. Shop our latest arrivals and best sellers."
+      />
+      <link rel="canonical" href="https://www.eziokids.com/" />
 
-      <div className="mt-14 w-full flex flex-col">
-        <Hero />
-        <ProductCarousel />
-      </div>
-    </div>
+      <header>
+        <TopBar />
+      </header>
+
+      <main
+        aria-label="Homepage content"
+        className="mt-16 w-full flex flex-col overflow-x-hidden bg-background"
+      >
+        {/* Hero Section */}
+        <section aria-label="Hero section">
+          <Hero />
+        </section>
+
+        {/* Best Seller Section */}
+        <BestSeller />
+
+        {/* New Arrivals */}
+        <section aria-labelledby="new-arrivals-heading">
+          <NewArrivalCarousel />
+        </section>
+      </main>
+
+      {/* Footer */}
+      <Footer />
+    </>
   );
 }
-
-export default LandingPage;
