@@ -76,7 +76,7 @@ export default function BestSeller() {
               <Link
                 to={`/products/${item.id}`}
                 aria-label={`View ${item.name}`}
-                className="block h-full"
+                className="block h-full hover:scale-[98%] transition-transform duration-300"
               >
                 <div className="aspect-[3/4] overflow-hidden rounded-t-lg">
                   <img
