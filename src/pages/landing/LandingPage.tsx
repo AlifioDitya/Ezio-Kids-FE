@@ -7,7 +7,7 @@ function LandingPage() {
     <div className="w-full flex flex-col overflow-x-hidden bg-background">
       <TopBar />
 
-      <div className="mt-20 w-full flex flex-col">
+      <div className="mt-14 w-full flex flex-col">
         <Hero />
         <ProductCarousel />
       </div>
